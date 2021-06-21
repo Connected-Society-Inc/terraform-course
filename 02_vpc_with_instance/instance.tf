@@ -1,8 +1,4 @@
-provider "google" {
-    zone   = "us-central1-c"
-}
-
-# resource <resource_type> <internal_resource_id> { ... properties ... }
+# Instance in the Subnet which is in the VPC
 resource "google_compute_instance" "instance" {
 
     name = "instance-by-terraform"
@@ -15,9 +11,7 @@ resource "google_compute_instance" "instance" {
     }
 
     network_interface {
-        network = "default"
+        subnetwork = google_compute_subnetwork.subnet.id
     }
 }
 
-
-// ...
