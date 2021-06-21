@@ -1,6 +1,9 @@
 provider "google" {
     region = "us-central1"
     zone   = "us-central1-c"
+    #credentials = "c:\..."
+    #project = "tf-gcp-student-X"
+
 }
 
 # resource <resource_type> <internal_resource_id> { ... properties ... }
