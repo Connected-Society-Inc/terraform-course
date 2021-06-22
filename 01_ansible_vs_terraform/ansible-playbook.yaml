@@ -1,0 +1,10 @@
+---
+- hosts: localhost
+  tasks:
+  - name: provision instances
+    ec2:
+      instance_type: t2.micro
+      image: ami-0528a5175983e7f28
+      region: us-west-1
+      count: 1
+
