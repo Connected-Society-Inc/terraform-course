@@ -13,7 +13,7 @@ data "google_secret_manager_secret_version" "ssh_key" {
 resource "google_compute_instance" "instance" {
 
     # name = "terraform-instance"
-    name         = "terraform"
+    name         = "terraform-2"
     machine_type = "f1-micro"
 
     boot_disk {
