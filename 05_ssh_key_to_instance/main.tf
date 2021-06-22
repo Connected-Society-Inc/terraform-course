@@ -24,6 +24,10 @@ resource "google_compute_instance" "instance" {
           // if you leave this block empty => ephemeral ip will be generated
         }
     }
+
+    metadata = {
+      "ssh-keys" = "root:<public key>"
+    }
 }
 
 output "public_ip" {
