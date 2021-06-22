@@ -2,14 +2,8 @@ provider "google" {
     zone   = "us-central1-c"
 }
 
-variable "public_key_file" {
-    description = "File containing the public ssh key to add to the instance"
-    type = string
-    default = "./id_rsa.pub"
-}
-
-locals {
-    ssh_key = file("./id_rsa.pub")
+data "google_secret_manager_secret_version" "ssh_key" {
+    secret = "terraform-ssh-key"
 }
 
 # resource <resource_type> <internal_resource_id> { ... properties ... }
@@ -36,8 +30,7 @@ resource "google_compute_instance" "instance" {
     }
 
     metadata = {
-      # "ssh-keys" = "root:${local.ssh_key}"
-      "ssh-keys" = "root:${file(var.public_key_file)}"
+      "ssh-keys" = "root:${data.google_secret_manager_secret_version.ssh_key.secret_data}"
     }
 }
 
