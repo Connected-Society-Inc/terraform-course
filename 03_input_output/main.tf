@@ -26,17 +26,3 @@ resource "google_compute_instance" "instance" {
     }
 }
 
-output "instance_id" {
-    value = google_compute_instance.instance.instance_id
-}
-
-output "instance_ip" {
-    value = google_compute_instance.instance.network_interface[0].access_config[0].nat_ip
-}
-
-variable "instance_name" {
-    description = "The name of the compute engine instance to be provisioned"
-    type        = string
-    # default     = "terraform-instance"
-}
-
