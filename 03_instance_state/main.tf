@@ -3,9 +3,12 @@ provider "google" {
 }
 
 # resource <resource_type> <internal_resource_id> { ... properties ... }
+# Provision a GCP Compute Engine instance with a public ip address
+# to have access from outside
+# Link to doc of the resource: https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_instance
 resource "google_compute_instance" "instance" {
 
-    name = "instance-by-terraform"
+    name = "terraform-instance"
     machine_type = "f1-micro"
 
     boot_disk {
@@ -16,6 +19,9 @@ resource "google_compute_instance" "instance" {
 
     network_interface {
         network = "default"
+        access_config {
+          // if you leave this block empty => ephemeral ip will be generated
+        }
     }
 }
 
