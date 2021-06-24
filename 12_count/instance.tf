@@ -3,7 +3,7 @@ resource "google_compute_instance" "instance" {
 
     count = length(var.subnets)
 
-    name = "instance-${count.index}"
+    name = var.instance_names[count.index]
     machine_type = "f1-micro"
 
     boot_disk {
