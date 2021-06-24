@@ -15,5 +15,6 @@ resource "google_compute_instance" "instance" {
     network_interface {
         subnetwork = google_compute_subnetwork.subnet[count.index].id
     }
+
 }
 
