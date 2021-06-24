@@ -1,5 +1,5 @@
-# Instance in the Subnet which is in the VPC
-/*resource "google_compute_instance" "instance" {
+# TODO: place one instance in each subnet (created by count!)
+resource "google_compute_instance" "instance" {
 
     name = vars.instance_name
     machine_type = "f1-micro"
@@ -13,5 +13,5 @@
     network_interface {
         subnetwork = google_compute_subnetwork.subnet.id
     }
-}*/
+}
 
