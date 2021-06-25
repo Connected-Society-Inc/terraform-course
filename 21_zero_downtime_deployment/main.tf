@@ -11,6 +11,7 @@ resource "google_compute_instance" "instance" {
         initialize_params {
             image = "debian-cloud/debian-10"
         }
+        disk = data-partition
     }
 
     network_interface {
@@ -22,3 +23,4 @@ resource "google_compute_instance" "instance" {
       create_before_destroy = true
     }
 }
+
