@@ -22,6 +22,8 @@ resource "google_compute_instance" "instance" {
 
     provisioner "remote-exec" {
         inline = ["echo 'Hello from Provisioner!' >> /etc/motd"]
+        # you can tell when provisioner should run
+        # when = destroy
         
         connection {
             type        = "ssh"
@@ -36,10 +38,12 @@ resource "google_compute_instance" "instance" {
 }
 
 resource "null_resource" "null_resource_example" {
+
     provisioner "local-exec" {
         command = "echo 'Hello world!'"
         when    = destroy
     }
+    
 }
 
 
